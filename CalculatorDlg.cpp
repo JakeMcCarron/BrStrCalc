@@ -5,6 +5,8 @@
 #include "Calculator.h"
 #include "CalculatorDlg.h"
 
+import Module;
+
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #undef THIS_FILE

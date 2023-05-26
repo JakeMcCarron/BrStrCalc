@@ -12,6 +12,7 @@
 
 #define VC_EXTRALEAN		// Exclude rarely-used stuff from Windows headers
 
+#include <sdkddkver.h>
 #include <afxwin.h>         // MFC core and standard components
 #include <afxext.h>         // MFC extensions
 #include <afxdisp.h>        // MFC Automation classes
@@ -19,6 +20,8 @@
 #ifndef _AFX_NO_AFXCMN_SUPPORT
 #include <afxcmn.h>			// MFC support for Windows Common Controls
 #endif // _AFX_NO_AFXCMN_SUPPORT
+
+
 
 
 //{{AFX_INSERT_LOCATION}}
