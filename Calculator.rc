@@ -172,7 +172,7 @@ END
 
 // Icon with lowest ID value placed first to ensure application icon
 // remains consistent on all systems.
-IDR_MAINFRAME           ICON    DISCARDABLE     "res\\DialogTest.ico"
+IDR_MAINFRAME           ICON    DISCARDABLE     "res\\Calculator.ico"
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -204,7 +204,7 @@ END
 LANGUAGE 9, 1
 #pragma code_page(1252)
 #endif //_WIN32
-#include "res\DialogTest.rc2"  // non-Microsoft Visual C++ edited resources
+#include "res\Calculator.rc2"  // non-Microsoft Visual C++ edited resources
 #include "afxres.rc"         // Standard components
 #endif
 

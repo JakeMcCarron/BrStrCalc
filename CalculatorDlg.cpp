@@ -2,8 +2,8 @@
 //
 
 #include "stdafx.h"
-#include "DialogTest.h"
-#include "DialogTestDlg.h"
+#include "Calculator.h"
+#include "CalculatorDlg.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
