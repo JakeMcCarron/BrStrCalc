@@ -63,7 +63,7 @@
       <PreprocessorDefinitions>_WIN64;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <PrecompiledHeaderOutputFile>$(IntDir)DialogTest.pch</PrecompiledHeaderOutputFile>
-      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
       <ObjectFileName>$(IntDir)</ObjectFileName>
       <ProgramDataBaseFileName>$(IntDir)</ProgramDataBaseFileName>
@@ -71,9 +71,11 @@
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
       <BuildStlModules>false</BuildStlModules>
-      <AdditionalModuleDependencies>$(SolutionDir)lib\MathsFuncs\;%(AdditionalModuleDependencies)</AdditionalModuleDependencies>
+      <AdditionalModuleDependencies>%(AdditionalModuleDependencies)</AdditionalModuleDependencies>
       <ScanSourceForModuleDependencies>true</ScanSourceForModuleDependencies>
       <TranslateIncludes>false</TranslateIncludes>
+      <EnableModules>true</EnableModules>
+      <SDLCheck>true</SDLCheck>
     </ClCompile>
     <Midl>
       <SuppressStartupBanner>true</SuppressStartupBanner>
@@ -95,6 +97,8 @@
       <SubSystem>Windows</SubSystem>
       <OutputFile>$(OutDir)$(TargetFileName)</OutputFile>
       <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalManifestDependencies>
+      </AdditionalManifestDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -109,15 +113,17 @@
       <PreprocessorDefinitions>_WIN64;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <PrecompiledHeaderOutputFile>$(IntDir)DialogTest.pch</PrecompiledHeaderOutputFile>
-      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
       <ObjectFileName>$(IntDir)</ObjectFileName>
       <ProgramDataBaseFileName>$(IntDir)</ProgramDataBaseFileName>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
-      <AdditionalModuleDependencies>$(SolutionDir)lib\MathsFuncs\;%(AdditionalModuleDependencies)</AdditionalModuleDependencies>
+      <AdditionalModuleDependencies>%(AdditionalModuleDependencies)</AdditionalModuleDependencies>
       <ScanSourceForModuleDependencies>true</ScanSourceForModuleDependencies>
       <TranslateIncludes>false</TranslateIncludes>
+      <EnableModules>true</EnableModules>
+      <BuildStlModules>false</BuildStlModules>
     </ClCompile>
     <Midl>
       <SuppressStartupBanner>true</SuppressStartupBanner>
@@ -138,6 +144,8 @@
       <SubSystem>Windows</SubSystem>
       <OutputFile>$(OutDir)$(TargetFileName)</OutputFile>
       <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalManifestDependencies>
+      </AdditionalManifestDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -171,6 +179,9 @@
   <ItemGroup>
     <ProjectReference Include="lib\MathsFuncs\MathsFuncs.vcxproj">
       <Project>{fe56a732-7ab0-4f5f-a469-8bc96bf8726b}</Project>
+    </ProjectReference>
+    <ProjectReference Include="lib\VariableHandler\VariableHandler.vcxproj">
+      <Project>{10245e11-a447-4f1b-8594-51302caadc45}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

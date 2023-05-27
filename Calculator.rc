@@ -1,4 +1,4 @@
-//Microsoft Developer Studio generated resource script.
+// Microsoft Visual C++ generated resource script.
 //
 #include "resource.h"
 
@@ -13,48 +13,55 @@
 #undef APSTUDIO_READONLY_SYMBOLS
 
 /////////////////////////////////////////////////////////////////////////////
-// English (U.K.) resources
+// English (United Kingdom) resources
 
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENG)
-#ifdef _WIN32
 LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_UK
 #pragma code_page(1252)
-#endif //_WIN32
 
 /////////////////////////////////////////////////////////////////////////////
 //
 // Dialog
 //
 
-IDD_ABOUTBOX DIALOG DISCARDABLE  0, 0, 235, 55
-STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+IDD_ABOUTBOX DIALOGEX 0, 0, 235, 55
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
 CAPTION "About DialogTest"
-FONT 8, "MS Sans Serif"
+FONT 8, "MS Sans Serif", 0, 0, 0x0
 BEGIN
     ICON            IDR_MAINFRAME,IDC_STATIC,11,17,20,20
-    LTEXT           "DialogTest Version 1.0",IDC_STATIC,40,10,119,8,
-                    SS_NOPREFIX
-    LTEXT           "Copyright (C) 2000",IDC_STATIC,40,25,119,8
+    LTEXT           "Calculator Version 1.0",IDC_STATIC,40,10,119,8,SS_NOPREFIX
+    LTEXT           "Copyright (C)",IDC_STATIC,40,25,119,8
     DEFPUSHBUTTON   "OK",IDOK,178,7,50,14,WS_GROUP
 END
 
-IDD_DIALOGTEST_DIALOG DIALOGEX 0, 0, 201, 127
-STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+IDD_DIALOGTEST_DIALOG DIALOGEX 0, 0, 202, 257
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
 EXSTYLE WS_EX_APPWINDOW
 CAPTION "Test Calculator"
-FONT 8, "MS Sans Serif", 0, 0, 0x1
+FONT 12, "Segoe UI", 400, 0, 0x0
 BEGIN
-    PUSHBUTTON      "Close",IDCANCEL,144,7,50,14
-    EDITTEXT        IDC_VALUE_1,66,35,40,14,ES_AUTOHSCROLL
-    EDITTEXT        IDC_VALUE_2,66,53,40,14,ES_AUTOHSCROLL
-    PUSHBUTTON      "+",IDC_PLUS,7,53,20,14
-    PUSHBUTTON      "-",IDC_PLUS2,37,53,20,14
-    GROUPBOX        "Result:",IDC_STATIC,49,75,95,43
-    EDITTEXT        IDC_RESULT,66,89,40,14,ES_AUTOHSCROLL
+    CONTROL         "Integer",IDC_MODE_INT,"Button",BS_AUTORADIOBUTTON | WS_GROUP,12,16,38,10
+    CONTROL         "Decimal",IDC_MODE_DEC,"Button",BS_AUTORADIOBUTTON,56,16,41,10
+    EDITTEXT        IDC_VALUE_1,17,117,178,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_VALUE_2,17,139,178,14,ES_AUTOHSCROLL
+    PUSHBUTTON      "+",IDC_PLUS,7,171,26,22
+    PUSHBUTTON      "-",IDC_MINUS,48,171,28,22
+    PUSHBUTTON      "*",IDC_MULTIPLY,99,171,28,22
+    PUSHBUTTON      "/",IDC_DIVIDE,146,171,28,22
+    PUSHBUTTON      "Close",IDCANCEL,145,236,50,14
+    EDITTEXT        IDC_RESULT,7,37,188,14,ES_AUTOHSCROLL | ES_READONLY
+    GROUPBOX        "Mode",IDC_STATIC,7,7,188,22
+    LTEXT           "1:",IDC_STATIC,7,119,8,8
+    LTEXT           "2:",IDC_STATIC,7,141,8,8
+    PUSHBUTTON      "? 1",IDC_COPYTO_1,7,55,24,14
+    PUSHBUTTON      "? 2",IDC_COPYTO_2,45,55,24,14
+    EDITTEXT        IDC_VAR_ASSIGN_EDIT,7,75,40,14,ES_AUTOHSCROLL
+    PUSHBUTTON      "Assign",IDC_VAR_ASSIGN,53,75,24,14
+    LTEXT           "Static",IDC_VAR_DEF,7,95,188,8,SS_ENDELLIPSIS
 END
 
 
-#ifndef _MAC
 /////////////////////////////////////////////////////////////////////////////
 //
 // Version
@@ -77,18 +84,13 @@ BEGIN
     BEGIN
         BLOCK "080904b0"
         BEGIN
-            VALUE "Comments", "\0"
-            VALUE "CompanyName", "\0"
-            VALUE "FileDescription", "DialogTest MFC Application\0"
-            VALUE "FileVersion", "1, 0, 0, 1\0"
-            VALUE "InternalName", "DialogTest\0"
-            VALUE "LegalCopyright", "Copyright (C) 2000\0"
-            VALUE "LegalTrademarks", "\0"
-            VALUE "OriginalFilename", "DialogTest.EXE\0"
-            VALUE "PrivateBuild", "\0"
-            VALUE "ProductName", "DialogTest Application\0"
-            VALUE "ProductVersion", "1, 0, 0, 1\0"
-            VALUE "SpecialBuild", "\0"
+            VALUE "FileDescription", "DialogTest MFC Application"
+            VALUE "FileVersion", "1, 0, 0, 1"
+            VALUE "InternalName", "DialogTest"
+            VALUE "LegalCopyright", "Copyright (C) 2000"
+            VALUE "OriginalFilename", "DialogTest.EXE"
+            VALUE "ProductName", "DialogTest Application"
+            VALUE "ProductVersion", "1, 0, 0, 1"
         END
     END
     BLOCK "VarFileInfo"
@@ -97,8 +99,6 @@ BEGIN
     END
 END
 
-#endif    // !_MAC
-
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -106,7 +106,7 @@ END
 //
 
 #ifdef APSTUDIO_INVOKED
-GUIDELINES DESIGNINFO DISCARDABLE 
+GUIDELINES DESIGNINFO
 BEGIN
     IDD_ABOUTBOX, DIALOG
     BEGIN
@@ -119,9 +119,12 @@ BEGIN
     IDD_DIALOGTEST_DIALOG, DIALOG
     BEGIN
         LEFTMARGIN, 7
-        RIGHTMARGIN, 194
+        RIGHTMARGIN, 195
         TOPMARGIN, 7
-        BOTTOMMARGIN, 120
+        BOTTOMMARGIN, 250
+        HORZGUIDE, 55
+        HORZGUIDE, 131
+        HORZGUIDE, 153
     END
 END
 #endif    // APSTUDIO_INVOKED
@@ -133,18 +136,18 @@ END
 // TEXTINCLUDE
 //
 
-1 TEXTINCLUDE DISCARDABLE 
+1 TEXTINCLUDE 
 BEGIN
     "resource.h\0"
 END
 
-2 TEXTINCLUDE DISCARDABLE 
+2 TEXTINCLUDE 
 BEGIN
     "#include ""afxres.h""\r\n"
     "\0"
 END
 
-3 TEXTINCLUDE DISCARDABLE 
+3 TEXTINCLUDE 
 BEGIN
     "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
     "#define _AFX_NO_OLE_RESOURCES\r\n"
@@ -156,7 +159,7 @@ BEGIN
     "LANGUAGE 9, 1\r\n"
     "#pragma code_page(1252)\r\n"
     "#endif //_WIN32\r\n"
-    "#include ""res\\DialogTest.rc2""  // non-Microsoft Visual C++ edited resources\r\n"
+    "#include ""res\\Calculator.rc2""  // non-Microsoft Visual C++ edited resources\r\n"
     "#include ""afxres.rc""         // Standard components\r\n"
     "#endif\r\n"
     "\0"
@@ -172,19 +175,36 @@ END
 
 // Icon with lowest ID value placed first to ensure application icon
 // remains consistent on all systems.
-IDR_MAINFRAME           ICON    DISCARDABLE     "res\\Calculator.ico"
+IDR_MAINFRAME           ICON                    "res\\Calculator.ico"
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// AFX_DIALOG_LAYOUT
+//
+
+IDD_DIALOGTEST_DIALOG AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+IDD_ABOUTBOX AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
 
 /////////////////////////////////////////////////////////////////////////////
 //
 // String Table
 //
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_ABOUTBOX            "&About DialogTest..."
 END
 
-#endif    // English (U.K.) resources
+#endif    // English (United Kingdom) resources
 /////////////////////////////////////////////////////////////////////////////
 
 

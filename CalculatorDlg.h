@@ -7,6 +7,10 @@
 #if _MSC_VER > 1000
 #pragma once
 #endif // _MSC_VER > 1000
+#include <utility>
+#include <string>
+#include "lib/VariableHandler/VariableHandler.h"
+
 
 /////////////////////////////////////////////////////////////////////////////
 // CDialogTestDlg dialog
@@ -41,6 +45,36 @@ protected:
 	afx_msg HCURSOR OnQueryDragIcon();
 	//}}AFX_MSG
 	DECLARE_MESSAGE_MAP()
+public:
+	afx_msg void OnBnClickedPlus();
+	afx_msg void OnBnClickedMinus();
+	afx_msg void OnBnClickedMultiply();
+	afx_msg void OnBnClickedDivide();
+private:
+	CEdit val1Ctrl;
+	CEdit val2Ctrl;
+	CEdit resultCtrl;
+	CEdit variableCtrl;
+	CString varDef;
+
+	int calcMode = 0;
+
+	VariableHandler varHandler;
+
+	std::wstring GetEditCtrlText(const CEdit& ctrl);
+
+	std::pair<double, double> GetValsDec(const std::pair<std::wstring, std::wstring> vals);
+	std::pair<long long, long long> GetValsInt(const std::pair<std::wstring, std::wstring> vals);
+
+public:
+	afx_msg void OnBnClickedModeInt();
+	afx_msg void OnBnClickedModeDec();
+	afx_msg void OnEnChangeValue1();
+	afx_msg void OnEnChangeValue2();
+	afx_msg void OnBnClickedCopyto1();
+	afx_msg void OnBnClickedCopyto2();
+	afx_msg void OnBnClickedVarAssign();
+	afx_msg void OnEnChangeVarAssignEdit();
 };
 
 //{{AFX_INSERT_LOCATION}}
