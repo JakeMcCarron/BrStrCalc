@@ -29,3 +29,17 @@ export unsigned long long Factorial(unsigned long long x)
 	}
 	return ret;
 }
+
+export long long powll(long long base, unsigned long long pow)
+{
+	if (pow == 0)
+	{
+		return 1;
+	}
+	unsigned long long retValue = base;
+	for (auto i = 1; i < pow; ++i)
+	{
+		retValue *= base;
+	}
+	return retValue;
+}

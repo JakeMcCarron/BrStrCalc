@@ -9,6 +9,14 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MathsFuncs", "lib\MathsFunc
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "VariableHandler", "lib\VariableHandler\VariableHandler.vcxproj", "{10245E11-A447-4F1B-8594-51302CAADC45}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CalcTests", "test\CalcTests\CalcTests.vcxproj", "{C4227959-0C82-44BB-AF47-B2F74483A4F3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Testing", "Testing", "{E41634B2-2833-4FEB-B87F-FE4EA7EB0F21}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Lib", "Lib", "{D375EFA8-7F07-4068-A36B-38600F48C19B}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MathsTests", "test\MathsTests\MathsTests.vcxproj", "{814A4AA2-1268-49B9-A401-DB0D4045826D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -37,9 +45,27 @@ Global
 		{10245E11-A447-4F1B-8594-51302CAADC45}.Release|x64.ActiveCfg = Release|x64
 		{10245E11-A447-4F1B-8594-51302CAADC45}.Release|x64.Build.0 = Release|x64
 		{10245E11-A447-4F1B-8594-51302CAADC45}.Release|x86.ActiveCfg = Release|x64
+		{C4227959-0C82-44BB-AF47-B2F74483A4F3}.Debug|x64.ActiveCfg = Debug|x64
+		{C4227959-0C82-44BB-AF47-B2F74483A4F3}.Debug|x64.Build.0 = Debug|x64
+		{C4227959-0C82-44BB-AF47-B2F74483A4F3}.Debug|x86.ActiveCfg = Debug|x64
+		{C4227959-0C82-44BB-AF47-B2F74483A4F3}.Release|x64.ActiveCfg = Release|x64
+		{C4227959-0C82-44BB-AF47-B2F74483A4F3}.Release|x64.Build.0 = Release|x64
+		{C4227959-0C82-44BB-AF47-B2F74483A4F3}.Release|x86.ActiveCfg = Release|x64
+		{814A4AA2-1268-49B9-A401-DB0D4045826D}.Debug|x64.ActiveCfg = Debug|x64
+		{814A4AA2-1268-49B9-A401-DB0D4045826D}.Debug|x64.Build.0 = Debug|x64
+		{814A4AA2-1268-49B9-A401-DB0D4045826D}.Debug|x86.ActiveCfg = Debug|x64
+		{814A4AA2-1268-49B9-A401-DB0D4045826D}.Release|x64.ActiveCfg = Release|x64
+		{814A4AA2-1268-49B9-A401-DB0D4045826D}.Release|x64.Build.0 = Release|x64
+		{814A4AA2-1268-49B9-A401-DB0D4045826D}.Release|x86.ActiveCfg = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{FE56A732-7AB0-4F5F-A469-8BC96BF8726B} = {D375EFA8-7F07-4068-A36B-38600F48C19B}
+		{10245E11-A447-4F1B-8594-51302CAADC45} = {D375EFA8-7F07-4068-A36B-38600F48C19B}
+		{C4227959-0C82-44BB-AF47-B2F74483A4F3} = {E41634B2-2833-4FEB-B87F-FE4EA7EB0F21}
+		{814A4AA2-1268-49B9-A401-DB0D4045826D} = {E41634B2-2833-4FEB-B87F-FE4EA7EB0F21}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EF94C640-D0E8-4D77-B3D1-26F7CD0D7E21}

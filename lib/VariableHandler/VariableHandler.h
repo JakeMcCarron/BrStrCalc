@@ -3,12 +3,12 @@
 #include <map>
 #include <optional>
 
+//Maintains a map based on a varible (std::wstring) and a value (stored as a double - means they can only be so many digits).
 class VariableHandler
 {
-
 	public:
 
-		bool AddToMap(const std::wstring var, const double val)
+		inline bool AddToMap(const std::wstring var, const double val)
 		{
 			if (VariableHandler::RetrieveFromMap(var).has_value())
 			{
@@ -18,12 +18,12 @@ class VariableHandler
 			return true;
 		}
 	
-		void AddToMapOverride(const std::wstring var, const double val)
+		inline void AddToMapOverride(const std::wstring var, const double val)
 		{
 			varValMap.insert_or_assign(var, static_cast<double>(val));
 		}
 	
-		std::optional<double> RetrieveFromMap(const std::wstring var)
+		inline std::optional<double> RetrieveFromMap(const std::wstring var)
 		{
 			for (auto varVal : varValMap)
 			{
@@ -33,7 +33,7 @@ class VariableHandler
 			return std::nullopt;
 		}
 
-		auto GetFullMap()
+		inline auto GetFullMap()
 		{
 			return varValMap;
 		}

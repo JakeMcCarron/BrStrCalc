@@ -41,10 +41,10 @@ BOOL VariableDlg::OnInitDialog()
 {
 	CDialog::OnInitDialog();
 
+	//Init var list control
 	varListCtrl.InsertColumn(0, L"Variable Name", LVCFMT_LEFT, 150);
 	varListCtrl.InsertColumn(1, L"Value", LVCFMT_LEFT, 500);
 
-	//Init var list
 	int index = 0;
 	for (auto& varVal : varHandler.GetFullMap())
 	{

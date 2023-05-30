@@ -64,10 +64,15 @@ void PiCalcDlg::OnBnClickedPiCalcGo()
 {
 	calculating = !calculating;
 	calculating ? piCalcBtnCtrl.SetWindowTextW(L"Stop") : piCalcBtnCtrl.SetWindowTextW(L"Calculate");
-	auto pi = CalcPi(2, 1);
-	auto x = BBPAlgorithm(0);
-	auto y = BBPAlgorithm(1);
-	auto z = BBPAlgorithm(2);
+	CString numIterations;
+	piNumDigitsCtrl.GetWindowTextW(numIterations);
+
+	if (numIterations == L"")
+	{
+		numIterations = L"3";
+	}
+
+	auto pi = CalcPi(_wtoi(numIterations), 1);
 	std::wstring frmt = std::format(L"{}", pi);
 	piOutCtrl.SetWindowTextW(frmt.c_str());
 }
