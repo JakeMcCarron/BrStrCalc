@@ -2,41 +2,43 @@
 #include <string>
 #include <map>
 #include <optional>
-#include <variant>
 
 class VariableHandler
 {
 
 	public:
-		template<typename T>
-		bool AddToMap(const std::wstring var, T val)
+
+		bool AddToMap(const std::wstring var, const double val)
 		{
-			if (VariableHandler::RetrieveFromMap<T>(var).has_value())
+			if (VariableHandler::RetrieveFromMap(var).has_value())
 			{
 				return false;
 			}
-			varValMap.insert(std::make_pair(var, val));
+			varValMap.insert(std::make_pair(var, static_cast<double>(val)));
 			return true;
 		}
 	
-		template<typename T>
-		void AddToMapOverride(const std::wstring var, const T val)
+		void AddToMapOverride(const std::wstring var, const double val)
 		{
-			varValMap.insert_or_assign(var, val);
+			varValMap.insert_or_assign(var, static_cast<double>(val));
 		}
 	
-		template<typename T>
-		std::optional<T> RetrieveFromMap(const std::wstring var)
+		std::optional<double> RetrieveFromMap(const std::wstring var)
 		{
 			for (auto varVal : varValMap)
 			{
 				if (var == varVal.first)
-					return std::optional<T>(std::get<T>(varVal.second));
+					return std::optional<double>(varVal.second);
 			}
 			return std::nullopt;
 		}
+
+		auto GetFullMap()
+		{
+			return varValMap;
+		}
 	
 private:
-	std::map<std::wstring, std::variant<long long, double>> varValMap;
+	std::map<std::wstring, double> varValMap;
 };
 

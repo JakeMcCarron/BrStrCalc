@@ -6,6 +6,8 @@
 #include "CalculatorDlg.h"
 #include <string>
 #include <format>
+#include "VariableDlg.h"
+#include "PiCalcDlg.h"
 
 import BasicMaths;
 
@@ -23,14 +25,14 @@ class CAboutDlg : public CDialog
 public:
 	CAboutDlg();
 
-// Dialog Data
-	//{{AFX_DATA(CAboutDlg)
+	// Dialog Data
+		//{{AFX_DATA(CAboutDlg)
 	enum { IDD = IDD_ABOUTBOX };
 	//}}AFX_DATA
 
 	// ClassWizard generated virtual function overrides
 	//{{AFX_VIRTUAL(CAboutDlg)
-	protected:
+protected:
 	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV support
 	//}}AFX_VIRTUAL
 
@@ -71,7 +73,7 @@ CDialogTestDlg::CDialogTestDlg(CWnd* pParent /*=NULL*/)
 	//}}AFX_DATA_INIT
 	// Note that LoadIcon does not require a subsequent DestroyIcon in Win32
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
-	
+
 }
 
 void CDialogTestDlg::DoDataExchange(CDataExchange* pDX)
@@ -105,6 +107,8 @@ BEGIN_MESSAGE_MAP(CDialogTestDlg, CDialog)
 	ON_BN_CLICKED(IDC_COPYTO_2, &CDialogTestDlg::OnBnClickedCopyto2)
 	ON_BN_CLICKED(IDC_VAR_ASSIGN, &CDialogTestDlg::OnBnClickedVarAssign)
 	ON_EN_CHANGE(IDC_VAR_ASSIGN_EDIT, &CDialogTestDlg::OnEnChangeVarAssignEdit)
+	ON_BN_CLICKED(IDC_OPEN_VARIABLES_DLG, &CDialogTestDlg::OnBnClickedOpenVariablesDlg)
+	ON_BN_CLICKED(IDC_OPEN_PI_CALC, &CDialogTestDlg::OnBnClickedOpenPiCalc)
 END_MESSAGE_MAP()
 
 /////////////////////////////////////////////////////////////////////////////
@@ -136,10 +140,10 @@ BOOL CDialogTestDlg::OnInitDialog()
 	//  when the application's main window is not a dialog
 	SetIcon(m_hIcon, TRUE);			// Set big icon
 	SetIcon(m_hIcon, FALSE);		// Set small icon
-	
+
 	// TODO: Add extra initialization here
 	CheckRadioButton(IDC_MODE_INT, IDC_MODE_DEC, IDC_MODE_INT);
-	
+
 	return TRUE;  // return TRUE  unless you set the focus to a control
 }
 
@@ -160,13 +164,13 @@ void CDialogTestDlg::OnSysCommand(UINT nID, LPARAM lParam)
 //  to draw the icon.  For MFC applications using the document/view model,
 //  this is automatically done for you by the framework.
 
-void CDialogTestDlg::OnPaint() 
+void CDialogTestDlg::OnPaint()
 {
 	if (IsIconic())
 	{
 		CPaintDC dc(this); // device context for painting
 
-		SendMessage(WM_ICONERASEBKGND, (WPARAM) dc.GetSafeHdc(), 0);
+		SendMessage(WM_ICONERASEBKGND, (WPARAM)dc.GetSafeHdc(), 0);
 
 		// Center icon in client rectangle
 		int cxIcon = GetSystemMetrics(SM_CXICON);
@@ -189,7 +193,7 @@ void CDialogTestDlg::OnPaint()
 //  the minimized window.
 HCURSOR CDialogTestDlg::OnQueryDragIcon()
 {
-	return (HCURSOR) m_hIcon;
+	return (HCURSOR)m_hIcon;
 }
 
 
@@ -201,7 +205,7 @@ void CDialogTestDlg::OnBnClickedPlus()
 		auto vals = GetValsInt(std::make_pair(GetEditCtrlText(val1Ctrl), GetEditCtrlText(val2Ctrl)));
 		result = std::format(L"{}", Addition(vals.first, vals.second));
 	}
-	else if(calcMode == 1)
+	else if (calcMode == 1)
 	{
 		auto vals = GetValsDec(std::make_pair(GetEditCtrlText(val1Ctrl), GetEditCtrlText(val2Ctrl)));
 		result = std::format(L"{}", Addition(vals.first, vals.second));
@@ -277,7 +281,7 @@ std::wstring CDialogTestDlg::GetEditCtrlText(const CEdit& ctrl)
 std::pair<double, double> CDialogTestDlg::GetValsDec(const std::pair<std::wstring, std::wstring> vals)
 {
 	double val1, val2;
-	auto varRes1 = varHandler.RetrieveFromMap<double>(vals.first);
+	auto varRes1 = varHandler.RetrieveFromMap(vals.first);
 	if (varRes1.has_value())
 	{
 		val1 = varRes1.value();
@@ -286,7 +290,7 @@ std::pair<double, double> CDialogTestDlg::GetValsDec(const std::pair<std::wstrin
 	{
 		val1 = _wtof(vals.first.c_str());
 	}
-	auto varRes2 = varHandler.RetrieveFromMap<double>(vals.second);
+	auto varRes2 = varHandler.RetrieveFromMap(vals.second);
 	if (varRes2.has_value())
 	{
 		val2 = varRes2.value();
@@ -301,23 +305,23 @@ std::pair<double, double> CDialogTestDlg::GetValsDec(const std::pair<std::wstrin
 std::pair<long long, long long> CDialogTestDlg::GetValsInt(const std::pair<std::wstring, std::wstring> vals)
 {
 	long long val1, val2;
-	auto varRes1 = varHandler.RetrieveFromMap<long long>(vals.first);
+	auto varRes1 = varHandler.RetrieveFromMap(vals.first);
 	if (varRes1.has_value())
 	{
-		val1 = varRes1.value();
+		val1 = static_cast<long long>(varRes1.value());
 	}
 	else
 	{
-		val1 = _wtof(vals.first.c_str());
+		val1 = _wtoll(vals.first.c_str());
 	}
-	auto varRes2 = varHandler.RetrieveFromMap<long long>(vals.second);
+	auto varRes2 = varHandler.RetrieveFromMap(vals.second);
 	if (varRes2.has_value())
 	{
-		val2 = varRes2.value();
+		val2 = static_cast<long long>(varRes2.value());
 	}
 	else
 	{
-		val2 = _wtof(vals.second.c_str());
+		val2 = _wtoll(vals.second.c_str());
 	}
 	return std::make_pair(val1, val2);
 }
@@ -366,30 +370,16 @@ void CDialogTestDlg::OnBnClickedVarAssign()
 		return;
 	}
 
-	if (calcMode == 0)
+	const double val = _wtof(GetEditCtrlText(resultCtrl).c_str());
+	const bool success = varHandler.AddToMap(GetEditCtrlText(variableCtrl), val);
+	if (!success)
 	{
-		const long long val = _wtoll(GetEditCtrlText(resultCtrl).c_str());
-		const bool success = varHandler.AddToMap<long long>(GetEditCtrlText(variableCtrl), val);
-		if (!success)
+		if (AfxMessageBox(L"Variable already exists, override?", MB_YESNO) == IDYES)
 		{
-			if (AfxMessageBox(L"Variable already exists, override?", MB_YESNO) == IDYES)
-			{
-				varHandler.AddToMapOverride<long long>(GetEditCtrlText(variableCtrl), val);
-			}
+			varHandler.AddToMapOverride(GetEditCtrlText(variableCtrl), val);
 		}
 	}
-	else if (calcMode == 1)
-	{
-		const double val = _wtof(GetEditCtrlText(resultCtrl).c_str());
-		const bool success = varHandler.AddToMap<double>(GetEditCtrlText(variableCtrl), val);
-		if (!success)
-		{
-			if (AfxMessageBox(L"Variable already exists, override?", MB_YESNO) == IDYES)
-			{
-				varHandler.AddToMapOverride<double>(GetEditCtrlText(variableCtrl), val);
-			}
-		}
-	}
+
 	OnEnChangeVarAssignEdit();
 }
 
@@ -402,30 +392,31 @@ void CDialogTestDlg::OnEnChangeVarAssignEdit()
 		variableCtrl.SetWindowTextW(L"");
 	}
 
-	if (calcMode == 0)
+	auto varRes = varHandler.RetrieveFromMap(GetEditCtrlText(variableCtrl));
+	if (varRes.has_value())
 	{
-		auto varRes = varHandler.RetrieveFromMap<long long>(GetEditCtrlText(variableCtrl));
-		if (varRes.has_value())
-		{
-			varDef.Format(L"%s = %d", GetEditCtrlText(variableCtrl).c_str(), varRes.value());
-		}
-		else
-		{
-			varDef.Format(L"%s undefined", GetEditCtrlText(variableCtrl).c_str());
-		}
+		const std::wstring frmt = std::format(L"{} = {}", GetEditCtrlText(variableCtrl), varRes.value());
+		varDef = frmt.c_str();
 	}
-	else if (calcMode == 1)
+	else
 	{
-		auto varRes = varHandler.RetrieveFromMap<double>(GetEditCtrlText(variableCtrl));
-		if (varRes.has_value())
-		{
-			varDef.Format(L"%s = %d", GetEditCtrlText(variableCtrl).c_str(), varRes.value());
-		}
-		else
-		{
-			varDef.Format(L"%s undefined", GetEditCtrlText(variableCtrl).c_str());
-		}
+		varDef.Format(L"%s undefined", GetEditCtrlText(variableCtrl).c_str());
 	}
 
+
 	UpdateData(FALSE);
+}
+
+
+void CDialogTestDlg::OnBnClickedOpenVariablesDlg()
+{
+	VariableDlg dlg(varHandler);
+	dlg.DoModal();
+}
+
+
+void CDialogTestDlg::OnBnClickedOpenPiCalc()
+{
+	PiCalcDlg dlg;
+	dlg.DoModal();
 }

@@ -75,6 +75,8 @@ public:
 	afx_msg void OnBnClickedCopyto2();
 	afx_msg void OnBnClickedVarAssign();
 	afx_msg void OnEnChangeVarAssignEdit();
+	afx_msg void OnBnClickedOpenVariablesDlg();
+	afx_msg void OnBnClickedOpenPiCalc();
 };
 
 //{{AFX_INSERT_LOCATION}}

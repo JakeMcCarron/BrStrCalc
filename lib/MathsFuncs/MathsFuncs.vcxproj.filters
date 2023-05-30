@@ -18,5 +18,8 @@
     <ClCompile Include="Basic.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="PiFuncs.ixx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

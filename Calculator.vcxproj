@@ -151,12 +151,14 @@
   <ItemGroup>
     <ClCompile Include="Calculator.cpp" />
     <ClCompile Include="CalculatorDlg.cpp" />
+    <ClCompile Include="PiCalcDlg.cpp" />
     <ClCompile Include="StdAfx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">stdafx.h</PrecompiledHeaderFile>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">stdafx.h</PrecompiledHeaderFile>
     </ClCompile>
+    <ClCompile Include="VariableDlg.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Calculator.rc" />
@@ -164,8 +166,10 @@
   <ItemGroup>
     <ClInclude Include="Calculator.h" />
     <ClInclude Include="CalculatorDlg.h" />
+    <ClInclude Include="PiCalcDlg.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="StdAfx.h" />
+    <ClInclude Include="VariableDlg.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\Calculator.ico" />

@@ -60,6 +60,8 @@
       <ModuleOutputFile>$(IntDir)</ModuleOutputFile>
       <ModuleDependenciesFile>$(IntDir)</ModuleDependenciesFile>
       <EnableModules>true</EnableModules>
+      <TranslateIncludes>true</TranslateIncludes>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -77,6 +79,8 @@
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
       <EnableModules>true</EnableModules>
+      <TranslateIncludes>true</TranslateIncludes>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -87,6 +91,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Basic.ixx" />
+    <ClCompile Include="PiFuncs.ixx" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
